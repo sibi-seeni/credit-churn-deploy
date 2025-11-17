@@ -1,0 +1,22 @@
+# .gitignore
+
+# 1. Virtual Environments
+# The virtual environment is defined by requirements.txt, 
+# so the actual environment directory should not be committed.
+.venv
+env/
+myenv/
+
+# 2. Python Caches and Artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# 3. Jupyter Notebook Artifacts
+# Temporary files created by the notebook editor.
+.ipynb_checkpoints/
+
+# 4. Operating System Files
+# macOS metadata files.
+.DS_Store
