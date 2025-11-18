@@ -18,8 +18,7 @@ By identifying at-risk customers early, banks can proactively engage them with r
 ├── requirements.txt                        # List of Python dependencies
 ├── README.md                               # Project documentation
 ├── .gitignore                              # Files to exclude from version control
-└── data/
-    └── credit_card_churn.csv               # Dataset (if committed) or instructions to download
+└── credit_card_churn.csv                   # Dataset
 ````
 
 ## 🚀 Setup and Installation
@@ -33,7 +32,7 @@ By identifying at-risk customers early, banks can proactively engage them with r
 ### 1\. Clone the Repository
 
 ```bash
-git clone <YOUR_REPO_URL>
+git clone https://github.com/sibi-seeni/credit-churn-deploy.git
 cd credit-churn-deploy
 ```
 
