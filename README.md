@@ -1,17 +1,27 @@
-# Credit Card Churn Prediction Service
+# Credit Card Churn Prediction Service: An XGBoost Deployment
 
-This project implements an end-to-end Machine Learning pipeline to predict credit card customer churn. It includes data preparation, model training with XGBoost, and a production-ready web service deployed using Docker and Google Cloud Run.
+This project implements a complete Machine Learning Classification pipeline to predict credit card customer churn. The solution includes data cleaning, feature engineering, model selection, and deployment via Flask and Docker on Google Cloud Run.
 
-## 📋 Problem Description
+This work is highly relevant to my background, as my **previous experience in the financial industry** provided me with first-hand insight into the challenges of customer retention and the substantial costs associated with attrition. This context informed the feature engineering and model evaluation strategies, ensuring a pragmatic and business-focused solution.
 
-Credit card churn is a significant concern for financial institutions. Losing customers results in lost revenue and market share. This project aims to predict whether a customer is likely to cancel their credit card ("churn") based on their transaction history, demographics, and interaction data.
+## Problem Statement and Relevance
 
-By identifying at-risk customers early, banks can proactively engage them with retention strategies.
+Credit card churn remains a persistent and significant challenge for financial institutions. Losing an existing customer is far more costly than retaining them, due to the expense of new customer acquisition, regulatory costs, and the loss of future revenue streams (e.g., interest, transaction fees).
+
+The goal of this project is to build a highly accurate classification service that can identify customers at high risk of attrition early in their lifecycle. This enables the institution to deploy targeted, cost-effective retention campaigns.
+
+## 📊 Model Selection and Performance
+
+The methodology involved an extensive comparative analysis of multiple classification algorithms to determine the best model for production.
+
+* **Model Comparison:** Several models, including Logistic Regression, Random Forest, Gradient Boosting, **XGBoost**, and **LightGBM**, were evaluated based on metrics critical for churn prediction, such as **AUC (Area Under the Curve)**, **Accuracy** and **F1-Score**.
+* **Top Performers:** The ensemble methods, **XGBoost** and **LightGBM**, consistently demonstrated superior performance due to their robust handling of high-dimensional, mixed-type (categorical and numerical) data.
+* **Final Model:** **XGBoost** was selected as the final production model due to its high accuracy (validation score $\approx 97.6\%$), stability, and proven ability to handle complex feature interactions efficiently. The model was optimized using `GridSearchCV` to find the best hyperparameters.
 
 ## 📂 Repository Structure
 
 ```text
-├── credit-card-churn-classification.ipynb  # Jupyter Notebook for EDA, feature engineering, and model selection
+├── notebook.ipynb                          # Jupyter Notebook for EDA, feature engineering, and model selection
 ├── train.py                                # Script to train the model and save artifacts
 ├── predict.py                              # Flask web application for serving predictions
 ├── Dockerfile                              # Configuration to containerize the application
@@ -21,7 +31,7 @@ By identifying at-risk customers early, banks can proactively engage them with r
 └── credit_card_churn.csv                   # Dataset
 ````
 
-## 🚀 Setup and Installation
+## Setup and Installation
 
 ### Prerequisites
 
@@ -51,7 +61,7 @@ pip install -r requirements.txt
 
 -----
 
-## 🧠 Training the Model
+## Training the Model 🧠
 
 The training script loads the data, performs preprocessing (encoding categorical variables), handles class imbalance, and trains an XGBoost Classifier. It saves the trained model and necessary encoders for the inference service.
 
@@ -73,7 +83,7 @@ python train.py
 
 -----
 
-## 💻 Running the Application Locally
+## Running the Application Locally 💻
 
 ### Option 1: Running with Python (Flask)
 
@@ -105,7 +115,7 @@ The application is now running inside a container and accessible at `http://loca
 
 -----
 
-## ☁️ Deployment
+## Cloud Deployment
 
 This service has been deployed to **Google Cloud Run** and is publicly accessible.
 
@@ -135,7 +145,7 @@ gcloud run deploy churn-service-app \
 
 -----
 
-## 🔌 API Usage
+## API Usage
 
 You can send a `POST` request to the `/predict` endpoint with customer data in JSON format to get the churn probability.
 
