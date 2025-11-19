@@ -121,30 +121,6 @@ This service has been deployed to **Google Cloud Run** and is publicly accessibl
 
   * **Deployment URL:** [https://churn-service-app-145522621364.us-central1.run.app](https://churn-service-app-145522621364.us-central1.run.app)
 
-### Deployment Steps (Reference)
-
-For reference, the following commands were used to deploy the Docker container to Google Cloud Run:
-
-```bash
-# 1. Build image for AMD64 architecture (required for Cloud Run if building on Mac M1/M2)
-docker build --platform linux/amd64 -t churn-service .
-
-# 2. Tag the image for Google Artifact Registry
-docker tag churn-service us-central1-docker.pkg.dev/ml-camp-1/churn-service-repo/churn-model:latest
-
-# 3. Push the image
-docker push us-central1-docker.pkg.dev/ml-camp-1/churn-service-repo/churn-model:latest
-
-# 4. Deploy to Cloud Run
-gcloud run deploy churn-service-app \
-  --image us-central1-docker.pkg.dev/ml-camp-1/churn-service-repo/churn-model:latest \
-  --region us-central1 \
-  --port 5001 \
-  --allow-unauthenticated
-```
-
------
-
 ## API Usage
 
 You can send a `POST` request to the `/predict` endpoint with customer data in JSON format to get the churn probability.
